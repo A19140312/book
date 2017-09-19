@@ -36,6 +36,8 @@ UDP 是一个简单的传输层协议。和 TCP 相比，UDP 有下面几个显�
     客户端再次发送确认包(ACK)，SYN 标志位为0，ACK 标志位为1，并且把服务器发来 ACK 的序号字段+1，放在确定字段中发送给对方，并且在数据段放写ISN的+1
 
     发送完毕后，客户端进入 **ESTABLISHED** 状态，当服务器端接收到这个包时，也进入 **ESTABLISHED** 状态，TCP 握手结束。
+![TCP三次握手](http://image.lxway.com/upload/4/27/4271f125d3ee6f58e595c3460626c199_thumb.png)
+
 
 ###四次挥手
 TCP 的连接的拆除需要发送四个包，因此称为四次挥手(Four-way handshake)，也叫做改进的三次握手。客户端或服务器均可主动发起挥手动作，在 socket 编程中，任何一方执行 close() 操作即可产生挥手操作。
@@ -65,6 +67,7 @@ TCP 的连接的拆除需要发送四个包，因此称为四次挥手(Four-way 
     服务器端接收到这个确认包之后，关闭连接，进入 **CLOSED** 状态。
 
     客户端**等待了某个固定时间（两个最大段生命周期**，2MSL，2 Maximum Segment Lifetime）之后，没有收到服务器端的 ACK ，认为服务器端已经正常关闭连接，于是自己也关闭连接，进入 **CLOSED** 状态。
+![TCP四次挥手](http://image.lxway.com/upload/f/9c/f9c6c4828c7f6fb29101afd06db53876_thumb.png)
 
 
 
