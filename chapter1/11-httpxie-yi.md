@@ -123,7 +123,22 @@ Transfer-Encoding 是一个用来标示 HTTP 报文传输格式的头部值。�
 
 **注意：** chunked 和 multipart 两个名词在意义上有类似的地方，不过在 HTTP 协议当中这两个概念则不是一个类别的。multipart 是一种 Content-Type，标示 HTTP 报文内容的类型，而 chunked 是一种传输格式，标示报头将以何种方式进行传输。
 
-HTTP Pipelining（HTTP 管线化）
+###HTTP Pipelining（HTTP 管线化）
+默认情况下 HTTP 协议中每个传输层连接只能承载一个 HTTP 请求和响应，浏览器会在收到上一个请求的响应之后，再发送下一个请求。在使用持久连接的情况下，某个连接上消息的传递类似于** 请求1 -> 响应1 -> 请求2 -> 响应2 -> 请求3 -> 响应3。
+**
+HTTP Pipelining（管线化）是将多个 HTTP 请求整批提交的技术，在传送过程中不需等待服务端的回应。使用 HTTP Pipelining 技术之后，某个连接上的消息变成了类似这样**请求1 -> 请求2 -> 请求3 -> 响应1 -> 响应2 -> 响应3。**
+
+**注意下面几点：**
+
+* 管线化机制通过持久连接（persistent connection）完成，仅 HTTP/1.1 支持此技术（HTTP/1.0不支持）
+* 只有 GET 和 HEAD 请求可以进行管线化，而 POST 则有所限制
+* 初次创建连接时不应启动管线机制，因为对方（服务器）不一定支持 HTTP/1.1 版本的协议
+* 管线化不会影响响应到来的顺序，如上面的例子所示，响应返回的顺序并未改变
+* HTTP /1.1 要求服务器端支持管线化，但并不要求服务器端也对响应进行管线化处理，只是要求对于管线化的请求不失败即可
+* 由于上面提到的服务器端问题，开启管线化很可能并不会带来大幅度的性能提升，而且很多服务器端和代理程序对管线化的支持并不好，因此现代浏览器如 Chrome 和 Firefox 默认并未开启管线化支持
+
+
+更多关于 HTTP Pipelining 的知识可以参考<a href=“https://developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x#HTTP_Pipelining“>这里</a>
 
 
 
