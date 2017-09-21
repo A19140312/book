@@ -20,5 +20,6 @@
 * [第五章 数据结构与算法](di-wu-zhang-shu-ju-jie-gou-yu-suan-fa.md)
   * [排序算法汇总](di-wu-zhang-shu-ju-jie-gou-yu-suan-fa/pai-xu-suan-fa-hui-zong.md)
 * [第六章 JAVA](di-liu-zhang-java.md)
-  * 面试常见问题
+  * [面试常见问题](di-liu-zhang-java/mian-shi-chang-jian-wen-ti.md)
+* [第七章 智力题](di-qi-zhang-zhi-li-ti.md)
 

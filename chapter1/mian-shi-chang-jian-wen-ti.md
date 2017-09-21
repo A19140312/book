@@ -28,3 +28,6 @@
 ![IP地址](/assets/v2-7438cb1ba454ffe278f5c2310e69f3aa_b.png)
 ###说一说OSI七层模型
 ![OSI七层模型](http://images2015.cnblogs.com/blog/705728/201604/705728-20160424234824085-667046040.png)
+###为什么四次挥手，主动方要等待２MSL后才关闭连接
+**保证TCP协议的全双工连接能够可靠关闭．** 主要为了确保对方能受到ACK信息. 如果Client直接CLOSED了，那么由于IP协议的不可靠性或者是其它网络原因，导致Server没有收到Client最后回复的ACK。那么Server就会在超时之后继续发送FIN，此时由于Client已经CLOSED了，就找不到与重发的FIN对应的连接，最后Server就会收到RST而不是ACK，Server就会以为是连接错误把问题报告给高层。所以，Client不是直接进入CLOSED，而是要保持2MSL,如果在这个时间内又收到了server的关闭请求时可以进行重传，否则说明server已经受到确认包则可以关闭.
+_MSL(报文最大生存时间)_
