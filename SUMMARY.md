@@ -11,7 +11,7 @@
 * 第三章 操作系统
   * 面试常见问题
 * [第四章 数据库系统](di-si-zhang-shu-ju-ku-xi-tong.md)
-  * 事物
+  * [事物](di-si-zhang-shu-ju-ku-xi-tong/shi-wu.md)
   * 索引
   * 数据库引擎
   * 分页
