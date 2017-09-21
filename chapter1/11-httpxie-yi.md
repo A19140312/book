@@ -35,14 +35,15 @@ Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万
 5xx：服务器端错误--服务器未能实现合法的请求
 
 ```
-> 200 OK //客户端请求成功 </br>
-> 400 Bad Request    //客户端请求有语法错误，不能被服务器所理解 </br>
-> 401 Unauthorized   //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 </br>
-> 403 Forbidden      //服务器收到请求，但是拒绝提供服务 </br>
-> 404 Not Found      //请求资源不存在，eg：输入了错误的URL </br>
-> 500 Internal Server Error //服务器发生不可预期的错误 </br>
-> 503 Server Unavailable    //服务器当前不能处理客户端的请求，一段时间后可能恢复正常</br>
-
+```
+200 OK             //客户端请求成功 
+400 Bad Request    //客户端请求有语法错误，不能被服务器所理解 
+401 Unauthorized   //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 
+403 Forbidden      //服务器收到请求，但是拒绝提供服务 
+404 Not Found      //请求资源不存在，eg：输入了错误的URL 
+500 Internal Server Error //服务器发生不可预期的错误
+503 Server Unavailable    //服务器当前不能处理客户端的请求，一段时间后可能恢复正常
+```
 ###HTTP请求方法
 根据HTTP标准，HTTP请求可以使用多种请求方法。
 HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。
