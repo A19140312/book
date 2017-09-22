@@ -110,16 +110,19 @@ public void quickSort(int[] a,int l, int r){
 			a[j] = temp;
 		}
 	}
-	int temp = a[i];
-	a[i] = a[flag];
-	a[flag] = temp;
+	if(i != flag){
+		int temp = a[i];
+		a[i] = a[flag];
+		a[flag] = temp;
+	}
 	quickSort(a, l, i-1);
 	quickSort(a, i+1, r);
 }
 
 ```
-
-
+快排的最差情况为序列完全有序，此时快排退化为冒泡排序，时间复杂度为 O(n2)。
+*	**快排的优化**
+	* 随机选取基准
 
 
 
