@@ -99,22 +99,15 @@ public void insertSort(int[] a){
 
 public void quickSort(int[] a,int l, int r){
 	if(l >= r) return;
-	int flag = l;
 	int i = l , j = r;
 	while(i < j){
-		while(i < j && a[j] > a[flag])  j -- ;
-		while(i < j && a[i] < a[flag])  i ++ ;
-		if(i != j){
-			int temp = a[i];
-			a[i] = a[j];
-			a[j] = temp;
-		}
+		while(i < j && a[j] > a[l])  j -- ;
+		while(i < j && a[i] < a[l])  i ++ ;
+		if(i < j) swap(a, i, j);
+
 	}
-	if(i != flag){
-		int temp = a[i];
-		a[i] = a[flag];
-		a[flag] = temp;
-	}
+	if(i != l) swap(a, i, l);
+
 	quickSort(a, l, i-1);
 	quickSort(a, i+1, r);
 }
@@ -123,6 +116,39 @@ public void quickSort(int[] a,int l, int r){
 快排的最差情况为序列完全有序，此时快排退化为冒泡排序，时间复杂度为 O(n2)。
 *	**快排的优化**
 	* 随机选取基准
+
+
+```java
+/**
+ * 快速排序-随机基准点（升序排列）
+ * @param array
+ */
+
+public void quickSort(int[] a,int l, int r){
+	if(l >= r) return;
+	int i = l , j = r;
+	
+	Random rand = new Random();
+	int flag = l + rand.nextInt(r-l+1);
+	swap(a, l, flag);
+	
+	while(i < j){
+		while(i < j && a[j] > a[l]) j -- ;
+		while(i < j && a[i] < a[l]) i ++ ;
+		if(i < j) swap(a, i, j);
+	}
+	if(i != l) swap(a, i, l);
+		
+	quickSort(a, l, i-1);
+	quickSort(a, i+1, r);
+	}
+public void swap(int[]a , int i , int j){
+	int temp = a[i];
+	a[i] = a[j];
+	a[j] = temp;
+}
+```
+
 
 
 
