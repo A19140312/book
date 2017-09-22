@@ -61,9 +61,61 @@ public void selectSort(int[] a){
 每次将一个待排序的数据按照其关键字的大小插入到前面已经排序好的数据中的适当位置，直到全部数据排序完成。
 *	时间复杂度：**最坏：O(n2) 最好: O(n)** 平均: O(n2) 空间复杂度：O(1) 稳定性： 稳定 
 
+*	排序演示：![](http://wuchong.me/img/Insertion-sort-example-300px.gif)
 
 ```java
+/**
+ * 直接插入排序（升序排列）
+ * @param array
+ */
 
+public void insertSort(int[] a){
+	int len = a.length;
+	for(int i = 1 ; i < len ; i ++){
+		 int temp = a[i],j;
+		for(j = i ; j > 0 && a[j-1] > temp; j --){
+			a[j] = a[j-1];
+		}
+		a[j] = temp;
+	}
+}
+
+```
+
+##快速排序
+*	算法原理：
+	*	从数列中挑出一个元素作为基准数。
+	*	分区过程，将比基准数大的放到右边，小于或等于它的数都放到左边。
+	*	再对左右区间递归执行第二步，直至各区间只有一个数。
+*	时间复杂度：**最坏：O(n2) 最好: O(nlogn)** 平均: O(nlogn) 空间复杂度：O(logn) 稳定性： **不稳定 **
+
+*	排序演示：![](http://wuchong.me/img/Quicksort-example.gif)
+
+```java
+/**
+ * 快速排序-固定基准点（升序排列）
+ * @param array
+ */
+
+public void quickSort(int[] a,int l, int r){
+	if(l >= r) return;
+	int flag = l;
+	int i = l , j = r;
+	while(i < j){
+		while(i < j && a[j] > a[flag])  j -- ;
+		while(i < j && a[i] < a[flag])  i ++ ;
+		if(i != j){
+			int temp = a[i];
+			a[i] = a[j];
+			a[j] = temp;
+		}
+	}
+	int temp = a[i];
+	a[i] = a[flag];
+	a[flag] = temp;
+	quickSort(a, l, i-1);
+	quickSort(a, i+1, r);
+}
 
 ```
 
