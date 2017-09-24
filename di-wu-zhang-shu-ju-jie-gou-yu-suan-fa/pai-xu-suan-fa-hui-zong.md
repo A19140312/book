@@ -148,6 +148,46 @@ public void swap(int[]a , int i , int j){
 	a[j] = temp;
 }
 ```
+###堆排序
+*	算法原理：堆排序就是把最大堆堆顶的最大数取出，将剩余的堆继续调整为最大堆，再次将堆顶的最大数取出，这个过程持续到剩余数只有一个时结束。
+
+*	时间复杂度：**最坏：O(nlogn) 最好: O(nlogn)** 平均: O(nlogn) 空间复杂度：O(1) 稳定性： **不稳定 **
+
+
+
+```java
+/**
+ * 堆排序（升序排列）-建立最大堆
+ * @param array
+ */
+
+
+public static void heapSortAsc(int[] a){
+	int len = a.length;
+	for(int i = len/2 - 1 ; i >= 0 ;i --){
+		maxHeapDown(a,i,len-1);
+	}
+	for(int i = len - 1 ; i > 0 ; i --){//堆顶和末尾交换
+		swap(a, i, 0);
+		maxHeapDown(a, 0, i-1);
+	}	
+}
+public static void maxHeapDown(int[]a , int start , int end){//调整成为最大堆
+	int son = start*2 + 1;//左儿子
+	int root = a[start];
+		
+	for(; son <= end ;start = son,son = 2*son+1){
+		if(son < end && a[son] < a[son + 1]){
+			son ++;//右儿子
+		}
+		if(root >= a[son])break;
+		else {
+			swap(a, start, son);
+		}
+	} 
+}
+
+```
 
 
 
