@@ -1,6 +1,9 @@
 #排序算法汇总
 各种排序算法的时间复杂度以及稳定性
 ![](http://upload-images.jianshu.io/upload_images/273973-19cf4a1e58b6ebaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+* 算法稳定性：在原序列中，r[i]=r[j]，且r[i]在r[j]之前，而在排序后的序列中，r[i]仍在r[j]之前，则称这种排序算法是稳定的
+
+
 ##冒泡排序
 *    算法原理：相邻的数据进行两两比较，小(大)数放在前面，大(小)数放在后面，这样一趟下来，最小(大)的数就被排在了第一位，第二趟也是如此，如此类推，直到所有的数据排序完成。
 *    时间复杂度：**最坏：O(n2) 最好: O(n)** 平均: O(n2) 空间复杂度：O(1) 稳定性：稳定。
@@ -148,6 +151,43 @@ public void swap(int[]a , int i , int j){
 	a[j] = temp;
 }
 ```
+###归并排序
+*	算法原理：将两个（或两个以上）有序表合并成一个新的有序表，即把待排序序列分为若干个子序列，每个子序列是有序的。然后再把有序子序列合并为整体有序序列。
+*	时间复杂度：**最坏：O(nlogn) 最好: O(n)** 平均: O(nlogn) 空间复杂度：O(1) 稳定性： **稳定 **
+* 排序演示：![](http://bubkoo.qiniudn.com/merge-sort-example-300px.gif)
+
+
+```java
+/**
+ * 归并排序（升序排列）
+ * @param array
+ */
+
+
+public static void mergeSort(int[] a,int start,int end){
+	if(start+1 >= end)return;
+	int mid = (start+end)/2;
+	mergeSort(a, start, mid);
+	mergeSort(a, mid, end);
+	merge(a,start,end);
+}
+public static void merge(int[] a,int start,int end){
+	int b[] = new int[a.length];
+		
+	int mid = (start + end)/2;
+	int i = start, j = mid,k = start;
+		
+	while(i < mid && j < end){
+		if(a[i] < a[j])b[k++] = a[i++];
+		else b[k++] = a[j++];
+	}
+	while(i < mid) b[k++] = a[i++];
+	while(j < end) b[k++] = a[j++];
+		
+	while(start < end)a[start] = b[start++];
+}
+```
+
 ###堆排序
 *	算法原理：堆排序就是把最大堆堆顶的最大数取出，将剩余的堆继续调整为最大堆，再次将堆顶的最大数取出，这个过程持续到剩余数只有一个时结束。
 
