@@ -16,6 +16,7 @@
   * [4.3 数据库引擎](di-si-zhang-shu-ju-ku-xi-tong/shu-ju-ku-yin-qing.md)
   * [4.4 分页](di-si-zhang-shu-ju-ku-xi-tong/44-fen-ye.md)
   * [4.5 SQL语句](di-si-zhang-shu-ju-ku-xi-tong/45-sqlyu-ju.md)
+  * [4.6锁机制](di-si-zhang-shu-ju-ku-xi-tong/46suo-ji-zhi.md)
   * 面试常见问题
 * [第五章 数据结构与算法](di-wu-zhang-shu-ju-jie-gou-yu-suan-fa.md)
   * [5.1 排序算法](di-wu-zhang-shu-ju-jie-gou-yu-suan-fa/pai-xu-suan-fa-hui-zong.md)
