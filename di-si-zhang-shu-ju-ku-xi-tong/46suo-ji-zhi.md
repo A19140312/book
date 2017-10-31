@@ -45,16 +45,26 @@
     
 #锁的粒度
 锁的粒度就是指锁的生效范围，就是说是行锁，还是页锁，还是整表锁. 锁的粒度同样既可以由数据库自动管理，也可以通过手工指定hint来管理。
+#锁的兼容关系
+| Requested mode | IS  | S   | U   | IX  | SIX | X  |
+|  ----  |  ---- |  ----  |  ----  |  ----  | ---- | ----|
+| 意向共享锁 (IS)  | Yes | Yes | Yes | Yes | Yes | No |
+| 共享锁 (S)  | Yes | Yes | Yes | No  | No  | No |
+| 更新锁 (U) | Yes | Yes | No  | No  | No  | No |
+| 意向排他锁 (IX)| Yes | No  | No  | Yes | No  | No |
+| 意向共享排他锁 (SIX) | Yes | No  | No  | No  | No  | No |
+| 排他锁 (X)  | No  | No  | No  | No  | No  | No |
 
 #锁与事务的关系
 ![锁与事务的关系
 ](http://static.oschina.net/uploads/img/201207/09074335_5YM8.gif)
 
 #封锁协议
-* 一级封锁协议
-* 二级封锁协议
-* 三级封锁协议
-* 最强封锁协议
+##一级封锁协议
+
+##二级封锁协议
+##三级封锁协议
+##最强封锁协议
 
     
     
