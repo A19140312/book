@@ -23,6 +23,7 @@
 * [第六章 JAVA](di-liu-zhang-java.md)
   * [6.1多线程](di-liu-zhang-java/61duo-xian-cheng.md)
   * [6.2Java内存模型](di-liu-zhang-java/62javanei-cun-mo-xing.md)
+  * [6.3 String](di-liu-zhang-java/63-string.md)
   * [面试常见问题](di-liu-zhang-java/mian-shi-chang-jian-wen-ti.md)
 * [第七章 框架](di-qi-zhang-kuang-jia.md)
   * [Spring](di-qi-zhang-kuang-jia/spring.md)
