@@ -30,4 +30,5 @@
   * [Spring](di-qi-zhang-kuang-jia/spring.md)
 * [第八章 逻辑思维题](di-qi-zhang-zhi-li-ti.md)
 * [第九章 设计模式](di-jiu-zhang-she-ji-mo-shi.md)
+  * [9.1 单例模式](di-jiu-zhang-she-ji-mo-shi/91-dan-li-mo-shi.md)
 
