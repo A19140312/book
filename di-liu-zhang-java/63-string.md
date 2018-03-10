@@ -8,3 +8,35 @@
 
 ###StringBuilder(非线程安全)
 * 速度 ： StringBuilder > StringBuffer
+
+###String中equals的实现
+
+```java
+
+public boolean equals(Object anObject) {
+    /*若当前对象和比较多对象是同一对象*/
+    if (this == anObject) {
+        return true;
+    }
+    /*若当前传入的对象是String类型*/
+    if (anObject instanceof String) {
+        String anotherString = (String) anObject;
+        int n = value.length;
+        /*比较两个字符串长度*/
+        if (n == anotherString.value.length) {
+            char v1[] = value;
+            char v2[] = anotherString.value;
+            int i = 0;
+            /*长度相同比较数组中每一位*/
+            while (n-- != 0) {
+                if (v1[i] != v2[i])
+                    return false;
+                i++;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+```
+

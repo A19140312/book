@@ -1,4 +1,4 @@
-###与java内存模型交互时的指南
+ ###与java内存模型交互时的指南
 *    使用synchronized或volatile来保护在多个线程之间共享的字段
 *    将常量字段设置为final
 *    不要从构造函数中泄露this
