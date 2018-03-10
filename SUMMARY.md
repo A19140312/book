@@ -20,6 +20,7 @@
   * 面试常见问题
 * [第五章 数据结构与算法](di-wu-zhang-shu-ju-jie-gou-yu-suan-fa.md)
   * [5.1 排序算法](di-wu-zhang-shu-ju-jie-gou-yu-suan-fa/pai-xu-suan-fa-hui-zong.md)
+  * [5.2 KMP算法](di-wu-zhang-shu-ju-jie-gou-yu-suan-fa/52kmpsuan-fa.md)
 * [第六章 JAVA](di-liu-zhang-java.md)
   * [6.1多线程](di-liu-zhang-java/61duo-xian-cheng.md)
   * [6.2Java内存模型](di-liu-zhang-java/62javanei-cun-mo-xing.md)
