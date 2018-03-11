@@ -70,7 +70,19 @@ public class xx implements Manager{
     }
 }
 ```
+###Spring是如何创建bean的？
+* 1.读取XML文件
+* 2.读取到< bean >将id和class其存放在一个对象A中
+* 3.用集合List存放对象A
+* 4.遍历List，采用反射技术根据className实例化对象
+* 5.用map集合存放bean实例key=id value=对象
 
-
-
+###SpringMVC运行机制
+* 1、客户端发送HTTP请求到服务器
+* 2、SpringMVC的核心DispatcherServlet将请求交给HandlerMapping处理
+* 3、HandlerMapping通过查询机制找到处理当前请求的Handler
+* 4、DispatcherServlet将请求交给这个Handler处理
+* 5、Handler处理完成后返回一个ModleAndView对象，这个对象包含视图逻辑名和数据对象
+* 6、返回的视图逻辑名会通过视图解析器解析成真正的视图，并交给DispatcherServlet处理
+* 7、DispatcherServlet将请求分派给真正的视图对象，并反映到客户端
 
