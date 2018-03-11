@@ -22,3 +22,55 @@ Spring是一个开源的Java EE开发框架。是一个为Java应用程序的开
 * IOC：就是由容器控制程序之间的（依赖）关系，而非传统实现中，由程序代码直接操控。（依赖）控制权由应用代码中转到了外部容器，控制权的转移，是所谓反转。
 * DI：所谓依赖注入，即组件之间的依赖关系由容器在运行期决定，形象的来说，即由容器动态的将某种依赖关系注入到组件之中。
 
+###Spring的注解
+* **@Autowired：自动装配**；@Autowired默认按类型匹配的方式，在容器查找匹配的Bean，当有且仅有一个匹配的Bean时，Spring将其注入@Autowired标注的变量中。
+* **@Resource：**与@Autowired相似。
+    * @Autowired默认按照byType方式进行bean匹配，@Resource默认按照byName方式进行bean匹配
+    * @Autowired是Spring的注解，@Resource是J2EE的注解，这个看一下导入注解的时候这两个注解的包名就一清二楚了    
+* **@Service**：对应的是业务层Bean；
+* **@Controller**：对应表现层的Bean，也就是Action
+* **@Repository**：用于标注数据访问组件，即DAO组件。
+* **@Component**：泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。
+
+###Spring依赖注入(DI)的3中方法
+* 1.构造器注入
+
+```java
+public class xx {
+    private Manager manage;
+    public xx(Manager manage){
+        this.manage= manage;
+    }
+}
+```
+* 2.set方法注入
+
+```java
+public class xx {
+    private Manager manage;
+    public void setManager(Manager manage){
+        this.manage= manage;
+    }
+}
+
+```
+* 3.接口注入
+
+
+```java
+public interface Manager{
+     public void manage(Business business);
+}
+public class xx implements Manager{
+    private Business business;
+    
+    @Override
+    public void manage(Business business){
+        this.business = business;
+    }
+}
+```
+
+
+
+
