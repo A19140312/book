@@ -13,7 +13,6 @@
 /**
 * 饿汉单例模式
 **/
-
 public class EhanSingleton {
 	//static final单例对象，类加载的时候就初始化
 	private static final EhanSingleton instance = new EhanSingleton();
@@ -35,8 +34,6 @@ public class EhanSingleton {
 
 
 ```java
-package singleton;
-
 /**
  * 懒汉单例模式
  */
@@ -65,8 +62,75 @@ public class LanhanSingleton {
 
 
 ```java
+/**
+ * 双重检测单例
+ */
+public class DCLSingleton {
+	//被volatile修饰的变量的值，将不会被本地线程缓存
+	//所有对该变量的读写都是直接操作共享内存,从而确保多个线程能正确的处理该变量。
+	private volatile static DCLSingleton instance;
+	
+	private DCLSingleton(){}
+
+	public static DCLSingleton getInstance() {
+		if(instance == null){
+			synchronized (DCLSingleton.class){
+				//当第一次调用getInstance方法时，即instance为空时，同步操作，保证多线程实例唯一
+				//当以后调用getInstance方法时，即instance不为空时，不进入同步代码块，减少了不必要的同步开销
+				if(instance == null){
+					instance = new DCLSingleton();
+				}
+			}
+		}
+		return instance;
+	}
+}
 
 ```
+* 优点：
+	* 第一次执行getInstance时instance才被实例化，节省内存；
+	* 多线程情况下，基本安全；
+	* 并且在instance实例化以后，再次调用getInstance时，不会有同步消耗。
+* 缺点：
+	* jdk1.5以下，有可能DCL失效；
+	* Java内存模型影响导致失效；
+	* jdk1.5以后，使用volatile关键字，虽然能解决DCL失效问题，但是会影响部分性能。
+
+###3.4 静态内部类单例模式
+
+```java
+/**
+ * 静态内部类单例
+ */
+public class StaticSingleton {
+	//私有的构造方法，防止new
+	private StaticSingleton(){}
+
+	/**
+	 * 静态内部类
+	 * 第一次加载内部类的时候，实例化单例对象
+	 */
+	private static class StaticSingletonHolder{
+		private static final StaticSingleton instance = new StaticSingleton();
+	}
+
+	public static StaticSingleton getInstance(){
+		return StaticSingletonHolder.instance;
+	}
+}
+
+```
+* 优点：第一次加载StaticClassSingleton类时，并不会实例化instance，只有第一次调用getInstance方法时，Java虚拟机才会去加载StaticClassSingletonHolder类，继而实例化instance。
+* 缺点：第一次加载时反应不够快 
+
+###总结
+|  名称 | 优点  | 缺点   | 备注   |
+|  ----  |  ---- |  ----  |  ----  | 
+| 饿汉模式  | 线程安全 | 内存消耗太大 |  |
+| 懒汉模式  | 线程安全 | 同步方法消耗比较大 |  | 
+| DCL模式 | 线程安全，节省内存 | jdk版本受限、高并发会导致DCL失效 | **推荐使用**  |
+| 静态内部类模式| 线程安全、节省内存 | 实现比较麻烦  | **推荐使用** |
+
 
 
 
